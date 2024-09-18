@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="regression_tests">
+    <test name="end-end scenario">
+        <classes>
+            <!--
+            <class name="TestSuite.BoardTests.CreateBoard">
+                <methods>
+                    <include name="createBoard"/>
+                    <include name="getCardsOnNewBoard"/>
+                </methods>
+            </class>
+            -->
+        </classes>
+    </test>
+</suite>
