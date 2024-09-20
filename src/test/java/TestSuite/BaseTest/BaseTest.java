@@ -22,9 +22,8 @@ public class BaseTest {
 
         // Go to the main page
         driver.get("https://sutrastores.com/en");
-
     }
-/*
+
     @AfterMethod
     @Description("Common steps after and Test")
     public void afterMethod() {
@@ -32,9 +31,5 @@ public class BaseTest {
         driver.quit();
 
     }
-
-
- */
-
 
 }
