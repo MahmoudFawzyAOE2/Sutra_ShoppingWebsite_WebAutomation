@@ -29,7 +29,6 @@ public class BaseTest {
     public void afterMethod() {
         // Quit Session
         driver.quit();
-
     }
 
 }
