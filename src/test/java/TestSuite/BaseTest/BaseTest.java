@@ -10,6 +10,8 @@ public class BaseTest {
 
     public WebDriver driver;
 
+    public static String mainURL = "https://sutrastores.com/en" ;
+
     @BeforeMethod
     @Description("Common steps before and Test")
     public void beforeMethod() {
@@ -21,7 +23,7 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         // Go to the main page
-        driver.get("https://sutrastores.com/en");
+        driver.get(mainURL);
     }
 
     @AfterMethod

@@ -2,14 +2,26 @@
 <suite name="regression_tests">
     <test name="end-end scenario">
         <classes>
-            <!--
-            <class name="TestSuite.BoardTests.CreateBoard">
+            <class name="TestSuite.Search.MainSearchTests">
                 <methods>
-                    <include name="createBoard"/>
-                    <include name="getCardsOnNewBoard"/>
+                    <include name="smokeTest"/>
+                    <include name="searchFuncButton"/>
+                    <include name="searchFuncEnter"/>
+                    <include name="searchTrendingWidget"/>
                 </methods>
             </class>
-            -->
+            <class name="TestSuite.Search.SearchItemDisplayTests">
+                <methods>
+                    <include name="searchActualItemsCheck"/>
+                    <include name="searchFictionalItemsCheck"/>
+                </methods>
+            </class>
+            <class name="TestSuite.Search.SearchItemNumberTests">
+                <methods>
+                    <include name="searchNumOfItems"/>
+                    <include name="searchNumOfItemsZero"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
