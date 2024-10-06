@@ -1,78 +1,31 @@
-package PagesMethods;
-
+package Pages;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class SearchMethods {
+public class BasicMethods {
 
     public WebDriver driver ;
+    public BasicMethods(WebDriver driver) {this.driver = driver;}
+    public static String filePath = System.getProperty("user.dir") + File.separator + "ScreenShots/";
 
-    public static String itemToSearch = "jeans";
-    public static String[] expectedItems = {"Jeans","jeans","Pant","pant","Pants", "pants"};
-    public static String projectRoot = System.getProperty("user.dir");
-    public static String relativePath = "ScreenShots/";
-    public static String filePath = projectRoot + File.separator + relativePath;
-    public SearchMethods(WebDriver driver) {this.driver = driver;}
-
-    public WebElement searchForItemNoEnter (String itemToSearch) {
-        WebElement searchButton = driver.findElement(By.cssSelector("svg.icon-search.modal__toggle-open.icon.w-h-22.stroke-w-15"));
-        searchButton.click();
-
-        WebElement searchTextBox = driver.findElement(By.cssSelector("input#Search-In-Modal-Menu-Plain"));
-        searchTextBox.sendKeys(itemToSearch);
-
-        return searchTextBox ;
-    }
-
-    public void searchForItem (String itemToSearch) {
-        WebElement searchButton = driver.findElement(By.cssSelector("svg.icon-search.modal__toggle-open.icon.w-h-22.stroke-w-15"));
-        searchButton.click();
-
-        WebElement searchTextBox = driver.findElement(By.cssSelector("input#Search-In-Modal-Menu-Plain"));
-        searchTextBox.sendKeys(itemToSearch);
-        searchTextBox.sendKeys(Keys.ENTER);
-    }
-
-    public int extractNumberFromHeader () {
-        // get number of items from the header
-        WebElement searchPageHeader = driver.findElement(By.cssSelector("h1.page-header.text-center.scroll-trigger.animate--slide-in"));
-        String searchPageHeaderText = searchPageHeader.getText();
-
-        // Extract the numbers using regular expression
-        String numberOfItems = searchPageHeaderText.replaceAll("[^0-9]", "");
-
-        // Convert the string to an integer
-        int numberOfItemsINT = Integer.parseInt(numberOfItems);
-        System.out.println(numberOfItemsINT);
-
-        return numberOfItemsINT ;
-    }
-
-    public void loadMoreElements (int numberOfElements) {
+    public void loadMoreElements (int numberOfElements) throws InterruptedException {
 
         // Scroll Down
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 1000);"); // Scrolls down by 10000 pixels
 
         // wait for elements to load
-
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //List<WebElement> elements = wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"), numberOfElements));
+        System.out.println("Loading...");
+        TimeUnit.SECONDS.sleep(1);
     }
 
-    public void loadAllElements (int numberOfElements, int numberOfAllElements) {
+    public void loadAllElements (int numberOfElements, int numberOfAllElements) throws InterruptedException {
 
         while (numberOfElements < numberOfAllElements){
             loadMoreElements(numberOfElements);
@@ -100,7 +53,7 @@ public class SearchMethods {
     }
 
     public static void takePageScreenshot(WebDriver driver, WebElement element) throws IOException {
-        // Scroll to the element
+        // Scroll to the element (make the element in the middle of the page)
         ((JavascriptExecutor) driver).executeScript(
                 "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
                         + "var elementTop = arguments[0].getBoundingClientRect().top;"
@@ -131,3 +84,4 @@ public class SearchMethods {
         System.out.println("Screenshot saved to: " + destFile.getAbsolutePath());
     }
 }
+

@@ -1,6 +1,7 @@
 package TestSuite.Search;
 
-import PagesMethods.SearchMethods;
+import Pages.BasicMethods;
+import Pages.SearchPage;
 import TestSuite.BaseTest.BaseTest;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
@@ -14,36 +15,40 @@ import java.util.List;
 
 public class SearchItemNumberTests extends BaseTest {
 
-    private SearchMethods searchMethods;
+    private SearchPage searchMethods;
+    private BasicMethods basicMethods;
+
     @BeforeMethod
     public void setUp() {
         // Connect WebDriver from BaseTest with WebDriver from SearchMethods
-        searchMethods = new SearchMethods(driver);
+        basicMethods = new BasicMethods(driver);
+        searchMethods = new SearchPage(driver);
+
+        // Go to the main page
+        driver.get(mainURL);
     }
 
     @Test(priority = 1)
     @Description("verify correct number of search results on result page ")
-    public void searchNumOfItems() {
+    public void searchNumOfItems() throws InterruptedException {
 
-        searchMethods.searchForItem(SearchMethods.itemToSearch);
+        searchMethods.searchForItem(SearchPage.itemToSearch);
 
-        /* 1) get number of items by counting elements */
+        /* 2) get number of items from the header */
+        int numberOfElements_Header = searchMethods.extractNumberFromHeader();/* 1) get number of items by counting elements */
+
         // get number of elements
         List<WebElement> textElements = driver.findElements(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"));
         int numberOfElements = textElements.size();
 
-        // load more elements
-        searchMethods.loadMoreElements(numberOfElements);
+        // load All elements
+        basicMethods.loadAllElements(numberOfElements, numberOfElements_Header);
 
         // get number of elements after loading
         textElements = driver.findElements(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"));
         numberOfElements = textElements.size();
-        System.out.println(numberOfElements);
 
-        /* 2) get number of items from the header */
-        int numberOfItemsINT = searchMethods.extractNumberFromHeader();
-
-        Assert.assertEquals(numberOfElements,  numberOfItemsINT, "Number of Items are not the same");
+        Assert.assertEquals(numberOfElements,  numberOfElements_Header, "Number of Items are not the same");
     }
 
     @Test(priority = 2)

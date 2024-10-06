@@ -1,6 +1,7 @@
 package TestSuite.Search;
 
-import PagesMethods.SearchMethods;
+import Pages.BasicMethods;
+import Pages.SearchPage;
 import TestSuite.BaseTest.BaseTest;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
@@ -14,31 +15,37 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static PagesMethods.SearchMethods.takeElementScreenshot;
-import static PagesMethods.SearchMethods.takePageScreenshot;
+import static Pages.BasicMethods.takeElementScreenshot;
+import static Pages.BasicMethods.takePageScreenshot;
 
 public class SearchItemDisplayTests extends BaseTest {
-    private SearchMethods searchMethods;
+    private SearchPage searchMethods;
+    private BasicMethods basicMethods;
+
     @BeforeMethod
     public void setUp() {
         // Connect WebDriver from BaseTest with WebDriver from SearchMethods
-        searchMethods = new SearchMethods(driver);
+        basicMethods = new BasicMethods(driver);
+        searchMethods = new SearchPage(driver);
+
+        // Go to the main page
+        driver.get(mainURL);
     }
 
     @Test(priority = 1)
     @Description("verify correct items displayed when searching for \"x\"")
-    public void searchActualItemsCheck() throws IOException {
-        searchMethods.searchForItem(SearchMethods.itemToSearch);
+    public void searchActualItemsCheck() throws IOException, InterruptedException {
+        searchMethods.searchForItem(SearchPage.itemToSearch);
 
         // get number of elements
         List<WebElement> textElements = driver.findElements(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"));
         int numberOfElements = textElements.size();
 
         // get number of all elements from the header
-        int numberOfAllElements = searchMethods.extractNumberFromHeader();
+        int numberOfElements_Header = searchMethods.extractNumberFromHeader();
 
         // load more elements
-        searchMethods.loadAllElements(numberOfElements, numberOfAllElements);
+        basicMethods.loadAllElements(numberOfElements, numberOfElements_Header);
 
         // get the elements after new elements loaded
         textElements = driver.findElements(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"));
@@ -46,10 +53,8 @@ public class SearchItemDisplayTests extends BaseTest {
         for (WebElement element : textElements) {
             String itemName= element.getText();
 
-            boolean containsExpectedItem = Arrays.stream(SearchMethods.expectedItems)
+            boolean containsExpectedItem = Arrays.stream(SearchPage.expectedItems)
                     .anyMatch(item -> itemName.contains(item));
-
-            System.out.println(containsExpectedItem);
 
             // Assert that every item name has a keyword related to the searched word
             try {
