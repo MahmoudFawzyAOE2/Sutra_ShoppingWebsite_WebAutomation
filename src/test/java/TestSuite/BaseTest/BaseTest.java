@@ -1,3 +1,7 @@
+/*
+
+package TestSuite.BaseTest;
+
 package TestSuite.BaseTest;
 
 import jdk.jfr.Description;
@@ -19,18 +23,21 @@ public class BaseTest {
         // Maximize the window
         driver.manage().window().maximize();
     }
-/*
+
     @AfterMethod
     @Description("Common steps after and Test")
     public void afterMethod() {
         // Quit Session
         driver.quit();
     }
+
+}
 */
 
-}                
+
+
 // alternative Base test
-/*package TestSuite.BaseTest;
+package TestSuite.BaseTest;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -59,4 +66,4 @@ public class BaseTest {
         }
     }
 }
-*/
+

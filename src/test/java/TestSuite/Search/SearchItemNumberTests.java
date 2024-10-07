@@ -59,6 +59,6 @@ public class SearchItemNumberTests extends BaseTest {
         searchMethods.searchForItem("");
 
         // verify that url didn't change
-        Assert.assertEquals(driver.getCurrentUrl(), "https://sutrastores.com/en");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://sutrastores.com/en/");
     }
 }

@@ -1,6 +1,6 @@
 package TestSuite.Accessories;
 
-import PagesMethods.AccessoriesPage;
+import Pages.AccessoriesPage;
 import TestSuite.BaseTest.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeClass;

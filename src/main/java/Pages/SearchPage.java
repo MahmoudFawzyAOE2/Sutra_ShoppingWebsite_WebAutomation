@@ -6,7 +6,6 @@ import org.openqa.selenium.*;
 public class SearchPage {
     public WebDriver driver;
     public SearchPage(WebDriver driver) {this.driver = driver;}
-
     public static String itemToSearch = "jeans";
     public static String[] expectedItems = {"Jeans", "jeans", "Pant", "pant", "Pants", "pants"};
 
