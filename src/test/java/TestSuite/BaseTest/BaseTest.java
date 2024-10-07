@@ -28,4 +28,35 @@ public class BaseTest {
     }
 */
 
+}                
+// alternative Base test
+/*package TestSuite.BaseTest;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+
+import java.time.Duration;
+
+public class BaseTest {
+    protected WebDriver driver;
+    protected String mainURL = "https://sutrastores.com/en/";
+
+    @BeforeClass
+    public void setup() {
+
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+    }
+
+    @AfterClass
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
+*/
