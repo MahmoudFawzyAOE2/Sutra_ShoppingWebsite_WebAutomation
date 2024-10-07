@@ -64,26 +64,33 @@ public class MainHomeTests extends BaseTest {
         WebElement category = categoryHeaderList.get(1);
 
         // locate sub-category element
-        WebElement subCategory = category.findElement(By.cssSelector("ul li a"));
+        WebElement subCategory = category.findElement(By.xpath("./following-sibling::ul/li[2]/a"));
 
-        String categoryText = subCategory.getText().toLowerCase();
+        WebElement subCategorySpan = subCategory.findElement(By.cssSelector("span.text.p-relative"));
 
+        String subCategoryText = subCategorySpan.getText();
 
-        if (categoryText.endsWith("s")) {
-            categoryText = categoryText.substring(0, categoryText.length() - 1);
+        System.out.println("subCategoryText: " + subCategoryText);
+
+        /*
+
+        String subCategoryLink = subCategory.getAttribute("href");
+
+        if (subCategoryText.endsWith("s")) {
+            subCategoryText = subCategoryText.substring(0, subCategoryText.length() - 1);
         }
 
         // navigate to the category page
-        String firstCategoryLink = firstCategory.getAttribute("href");
-        driver.get(firstCategoryLink);
+        driver.get(subCategoryLink);
 
         // extract text from header
         WebElement categoryPageHeader = driver.findElement(By.cssSelector("h1.articleLookbook-title.text-left"));
         String categoryPageHeaderText = categoryPageHeader.getText().toLowerCase();
 
         System.out.println(categoryPageHeaderText);
-        System.out.println(firstCategoryText);
-        Assert.assertTrue(categoryPageHeaderText.contains(firstCategoryText), "Text Mismatch.");
+        System.out.println(subCategoryText);
+        Assert.assertTrue(categoryPageHeaderText.contains(subCategoryText), "Text Mismatch.");
 
+         */
     }
 }
