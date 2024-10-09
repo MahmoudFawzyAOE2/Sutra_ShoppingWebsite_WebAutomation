@@ -106,4 +106,16 @@ public class AccessoriesTests extends BaseTest {
         beigeProducts = accessoriesPage.getFilteredProductsByColor("Beige");
         assertTrue(beigeProducts.isEmpty(), "Beige products found after deselecting Beige filter.");
     }
+    @Test(priority = 1, description = "Verify Add to Cart functionality")
+    public void verifyRemoveFromCart() throws InterruptedException {
+        accessoriesPage.selectFirstProduct();
+        accessoriesPage.addToCart();
+        Thread.sleep(2000);
+        accessoriesPage.removeFromCart();
+        Thread.sleep(2000);
+        String countText = accessoriesPage.getCartCount();
+        assertTrue(Integer.parseInt(countText) == 0, "Product was not removed from the cart.");
+    }
+
+
 }
