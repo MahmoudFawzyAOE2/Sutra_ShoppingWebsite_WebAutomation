@@ -35,7 +35,7 @@ public class AccessoriesPage {
     }
 
     public String getCartCount() {
-        WebElement cartCount = driver.findElement(By.xpath("//a[@class='header__icon link header__icon--cart link--text focus-inset cart-icon-bubble']//span[@class='text']"));
+            WebElement cartCount = driver.findElement(By.xpath("//a[@class='header__icon link header__icon--cart link--text focus-inset cart-icon-bubble']//span[@class='text']"));
         String countText = cartCount.getText();
         return countText;
     }
@@ -148,5 +148,10 @@ public class AccessoriesPage {
 
     private void scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    public void removeFromCart(){
+        WebElement removeFromCart = driver.findElement(By.xpath("//a[@class='minus btn-quantity']"));
+        scrollToElement(removeFromCart);
+        removeFromCart.click();
     }
 }
