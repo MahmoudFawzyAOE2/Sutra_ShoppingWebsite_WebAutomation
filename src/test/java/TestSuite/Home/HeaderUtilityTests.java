@@ -69,7 +69,6 @@ public class HeaderUtilityTests extends BaseTest {
 
     }
 
-
     @Test(priority = 3)
     @Description("verify registration page navigation")
     public void homeForgetPassNav() throws InterruptedException {

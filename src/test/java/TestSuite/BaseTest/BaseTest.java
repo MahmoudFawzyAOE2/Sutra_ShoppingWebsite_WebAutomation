@@ -39,13 +39,17 @@ public class BaseTest {
 // alternative Base test
 package TestSuite.BaseTest;
 
+import Listeners.CustomListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.time.Duration;
+
+@Listeners(CustomListener.class)
 
 public class BaseTest {
     protected WebDriver driver;
@@ -60,10 +64,16 @@ public class BaseTest {
     }
 
     @AfterClass
-    public void teardown() {
+    public void teardown(ITestContext context) {
+        if (CustomListener.testFailed) {
+            System.out.println("Test failed. Keeping browser open for debugging.");
+            return; // Skip cleanup if any test failed
+        }
+
         if (driver != null) {
             driver.quit();
         }
     }
+
 }
 
