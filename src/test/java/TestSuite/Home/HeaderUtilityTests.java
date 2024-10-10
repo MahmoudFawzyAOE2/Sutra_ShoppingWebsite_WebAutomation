@@ -1,5 +1,7 @@
 package TestSuite.Home;
 
+import TestData.TestData;
+import URLs.URLs;
 import Pages.BasicMethods;
 import Pages.HomePage;
 import TestSuite.BaseTest.BaseTest;
@@ -59,13 +61,13 @@ public class HeaderUtilityTests extends BaseTest {
         Assert.assertTrue(registerButton.isDisplayed(), "Button is not displayed");
 
         // assert the correct text on the button
-        Assert.assertEquals(registerButton.getText().toLowerCase(), "create account", "Register Button has wrong text");
+        Assert.assertEquals(registerButton.getText().toLowerCase(), TestData.register, "Register Button has wrong text");
 
         // navigate to the register page
         registerButton.click();
 
         // assert correct navigation
-        Assert.assertEquals(driver.getCurrentUrl(), "https://sutrastores.com/en/account/register", "Wrong URL");
+        Assert.assertEquals(driver.getCurrentUrl(), URLs.register, "Wrong URL");
 
     }
 
@@ -83,13 +85,13 @@ public class HeaderUtilityTests extends BaseTest {
         Assert.assertTrue(forgetPassLink.isDisplayed(), "Link is not displayed");
 
         // assert the correct text on the button
-        Assert.assertEquals(homePage.getElementText(forgetPassLink).toLowerCase(), "forgot your password?", "forget password link has wrong text");
+        Assert.assertEquals(homePage.getElementText(forgetPassLink).toLowerCase(), TestData.forgetPassword, "forget password link has wrong text");
 
         // navigate to the register page
         forgetPassLink.click();
 
         // assert correct navigation
-        Assert.assertEquals(driver.getCurrentUrl(), "https://sutrastores.com/en/account/login#recover", "Wrong URL");
+        Assert.assertEquals(driver.getCurrentUrl(), URLs.forgetPassword, "Wrong URL");
     }
 
 

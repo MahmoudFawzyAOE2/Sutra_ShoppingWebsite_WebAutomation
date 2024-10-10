@@ -2,7 +2,9 @@ package TestSuite.Search;
 
 import Pages.BasicMethods;
 import Pages.SearchPage;
+import TestData.TestData;
 import TestSuite.BaseTest.BaseTest;
+import URLs.URLs;
 import jdk.jfr.Description;
 import org.openqa.selenium.*;
 import org.testng.Assert;
@@ -23,7 +25,7 @@ public class MainSearchTests extends BaseTest {
         searchMethods = new SearchPage(driver);
 
         // Go to the main page
-        driver.get(mainURL);
+        driver.get(URLs.mainURL);
     }
 
     @Test (priority = 1)
@@ -34,7 +36,7 @@ public class MainSearchTests extends BaseTest {
         System.out.println(driver.getCurrentUrl());
 
         String actualResult = driver.getCurrentUrl();
-        Assert.assertEquals(actualResult,  mainURL);
+        Assert.assertEquals(actualResult,  URLs.mainURL);
     }
 
     @Test (priority = 2)
@@ -56,9 +58,9 @@ public class MainSearchTests extends BaseTest {
     @Description("verify searching functionality via URL (enter keyboard)")
     public void searchFuncEnter() {
 
-        searchMethods.searchForItem(SearchPage.itemToSearch);
+        searchMethods.searchForItem(TestData.realProduct);
 
-        String expectedResult = String.format("https://sutrastores.com/en/search?q=%s&options%%5Bprefix%%5D=last&type=product", SearchPage.itemToSearch);
+        String expectedResult = URLs.searchItem(TestData.realProduct);
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult,  expectedResult);
     }
@@ -78,7 +80,7 @@ public class MainSearchTests extends BaseTest {
         Assert.assertTrue(headerTrending.isDisplayed(), "Header is not displayed on the webpage.");
 
         // verify header text is "Trending Now"
-        Assert.assertEquals(headerTrending.getText(),  "TRENDING NOW");
+        Assert.assertEquals(headerTrending.getText().toLowerCase(), TestData.trending);
 
         // locate the Trending elements
         List<WebElement> elementsTrending = driver.findElements(By.xpath("//*[@id=\"shopify-section-sections--18196977320172__9c03747e-b054-4db8-8194-5a35c71f82ca\"]/sticky-header/div/div/div[3]/details-modal/details/div/div/predictive-search/form/div[2]/div/div/div[1]/ul/li"));
@@ -101,7 +103,7 @@ public class MainSearchTests extends BaseTest {
                 childElement_a.findElement(By.cssSelector("span")).getText();
 
                 // verify that the element has the link to its own product search page
-                Assert.assertEquals(childElement_aLink,  String.format("https://sutrastores.com/en/search?q=%s*&type=product", childElement_a.findElement(By.cssSelector("span")).getText()));
+                Assert.assertEquals(childElement_aLink, URLs.searchproduct(childElement_a.findElement(By.cssSelector("span")).getText()) );
         }
     }
 }

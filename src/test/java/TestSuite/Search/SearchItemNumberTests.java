@@ -2,7 +2,9 @@ package TestSuite.Search;
 
 import Pages.BasicMethods;
 import Pages.SearchPage;
+import TestData.TestData;
 import TestSuite.BaseTest.BaseTest;
+import URLs.URLs;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
 
@@ -25,14 +27,14 @@ public class SearchItemNumberTests extends BaseTest {
         searchMethods = new SearchPage(driver);
 
         // Go to the main page
-        driver.get(mainURL);
+        driver.get(URLs.mainURL);
     }
 
     @Test(priority = 1)
     @Description("verify correct number of search results on result page ")
     public void searchNumOfItems() throws InterruptedException {
 
-        searchMethods.searchForItem(SearchPage.itemToSearch);
+        searchMethods.searchForItem(TestData.realProduct);
 
         /* 2) get number of items from the header */
         int numberOfElements_Header = searchMethods.extractNumberFromHeader();/* 1) get number of items by counting elements */
@@ -59,6 +61,6 @@ public class SearchItemNumberTests extends BaseTest {
         searchMethods.searchForItem("");
 
         // verify that url didn't change
-        Assert.assertEquals(driver.getCurrentUrl(), "https://sutrastores.com/en/");
+        Assert.assertEquals(driver.getCurrentUrl(), URLs.mainURL);
     }
 }

@@ -6,8 +6,6 @@ import org.openqa.selenium.*;
 public class SearchPage {
     public WebDriver driver;
     public SearchPage(WebDriver driver) {this.driver = driver;}
-    public static String itemToSearch = "jeans";
-    public static String[] expectedItems = {"Jeans", "jeans", "Pant", "pant", "Pants", "pants"};
 
     public WebElement searchForItemNoEnter(String itemToSearch) {
         WebElement searchButton = driver.findElement(By.cssSelector("svg.icon-search.modal__toggle-open.icon.w-h-22.stroke-w-15"));

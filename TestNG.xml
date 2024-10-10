@@ -12,8 +12,14 @@
             </class>
             <class name="TestSuite.Search.SearchItemDisplayTests">
                 <methods>
-                    <include name="searchActualItemsCheck"/>
-                    <include name="searchFictionalItemsCheck"/>
+                    <include name="searchRealItemsCheck"/>
+                    <include name="searchFakeItemsCheck"/>
+                </methods>
+            </class>
+            <class name="TestSuite.Search.SearchItemNumberTests">
+                <methods>
+                    <include name="searchNumOfItems"/>
+                    <include name="searchNumOfItemsZero"/>
                 </methods>
             </class>
             <class name="TestSuite.Search.SearchItemNumberTests">

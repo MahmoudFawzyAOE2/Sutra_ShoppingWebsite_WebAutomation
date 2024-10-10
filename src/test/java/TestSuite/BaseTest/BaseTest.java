@@ -53,8 +53,6 @@ import java.time.Duration;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected String mainURL = "https://sutrastores.com/en/";
-
     @BeforeClass
     public void setup() {
 

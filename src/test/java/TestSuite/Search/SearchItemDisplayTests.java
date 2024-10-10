@@ -2,7 +2,9 @@ package TestSuite.Search;
 
 import Pages.BasicMethods;
 import Pages.SearchPage;
+import TestData.TestData;
 import TestSuite.BaseTest.BaseTest;
+import URLs.URLs;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -29,13 +31,13 @@ public class SearchItemDisplayTests extends BaseTest {
         searchMethods = new SearchPage(driver);
 
         // Go to the main page
-        driver.get(mainURL);
+        driver.get(URLs.mainURL);
     }
 
     @Test(priority = 1)
     @Description("verify correct items displayed when searching for \"x\"")
-    public void searchActualItemsCheck() throws IOException, InterruptedException {
-        searchMethods.searchForItem(SearchPage.itemToSearch);
+    public void searchRealItemsCheck() throws IOException, InterruptedException {
+        searchMethods.searchForItem(TestData.realProduct);
 
         // get number of elements
         List<WebElement> textElements = driver.findElements(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"));
@@ -53,7 +55,7 @@ public class SearchItemDisplayTests extends BaseTest {
         for (WebElement element : textElements) {
             String itemName= element.getText();
 
-            boolean containsExpectedItem = Arrays.stream(SearchPage.expectedItems)
+            boolean containsExpectedItem = Arrays.stream(TestData.expectedItems)
                     .anyMatch(item -> itemName.contains(item));
 
             // Assert that every item name has a keyword related to the searched word
@@ -71,8 +73,8 @@ public class SearchItemDisplayTests extends BaseTest {
 
     @Test(priority = 2)
     @Description("verify no items displayed when searching for a non existing item  ")
-    public void searchFictionalItemsCheck() {
-        searchMethods.searchForItem("Banana");
+    public void searchFakeItemsCheck() {
+        searchMethods.searchForItem(TestData.fakeProduct);
 
         // get number of elements
         List<WebElement> textElements = driver.findElements(By.cssSelector("div.collection.resultListing a.card-title.link-underline.card-title-ellipsis.card-title-change"));
