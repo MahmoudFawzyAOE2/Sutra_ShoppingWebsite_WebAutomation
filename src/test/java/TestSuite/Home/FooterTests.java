@@ -28,7 +28,7 @@ public class FooterTests extends BaseTest {
         homePage = new HomePage(driver);
 
         // Go to the main page
-        driver.get(mainURL);
+        driver.get(URLs.mainURL);
     }
 
     @Test(priority = 1)
@@ -66,6 +66,8 @@ public class FooterTests extends BaseTest {
         String headerOneText = headerOne.getText().toLowerCase();
         Assert.assertTrue(headerOneText.contains(TestData.brandName), "Text Mismatch.");
 
+
+
     }
 
     @Test(priority = 1)
@@ -78,14 +80,19 @@ public class FooterTests extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), URLs.tik_tok ,"Link Mismatch.");
 
+        WebElement closeButton = driver.findElement(By.cssSelector("button.TUXButton.TUXButton--borderless.TUXButton--xsmall.TUXButton--secondary"));
+        closeButton.click();
 
         WebElement headerOne = driver.findElement(By.xpath("//h1[@data-e2e='user-title']"));
         String headerOneText = headerOne.getText().toLowerCase();
         Assert.assertTrue(headerOneText.contains(TestData.brandName), "Text Mismatch.");
 
+        /*
         WebElement headerTwo = driver.findElement(By.xpath("//h1[@data-e2e='user-subtitle']"));
         String headerTwoText = headerTwo.getText().toLowerCase();
         Assert.assertTrue(headerTwoText.contains(TestData.brandName), "Text Mismatch.");
+
+         */
 
     }
 

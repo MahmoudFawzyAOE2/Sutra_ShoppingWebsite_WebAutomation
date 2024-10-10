@@ -1,11 +1,11 @@
 package TestSuite.Home;
 
 import Pages.BasicMethods;
+import URLs.URLs;
 import Pages.HomePage;
 import TestSuite.BaseTest.BaseTest;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -24,7 +24,7 @@ public class HeaderCategoriesTests extends BaseTest {
         homePage = new HomePage(driver);
 
         // Go to the main page
-        driver.get(mainURL);
+        driver.get(URLs.mainURL);
     }
 
     @Test(priority = 1)

@@ -26,9 +26,8 @@ public class HeaderUtilityTests extends BaseTest {
         homePage = new HomePage(driver);
 
         // Go to the main page
-        driver.get(mainURL);
+        driver.get(URLs.mainURL);
     }
-
 
     @Test(priority = 1)
     @Description("verify switching language functionality")

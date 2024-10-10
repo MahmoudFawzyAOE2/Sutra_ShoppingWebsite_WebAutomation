@@ -22,10 +22,47 @@
                     <include name="searchNumOfItemsZero"/>
                 </methods>
             </class>
-            <class name="TestSuite.Search.SearchItemNumberTests">
+            <class name="TestSuite.Register.MainRegisterTests">
                 <methods>
-                    <include name="searchNumOfItems"/>
-                    <include name="searchNumOfItemsZero"/>
+                    <include name="smokeTest"/>
+                    <include name="testEmptyEmail"/>
+                    <include name="testEmptyPassword"/>
+                    <include name="testEmailWithoutAt"/>
+                    <include name="testEmailWithNothingAfterDot"/>
+                    <include name="testEmailWithNothingAfterAt"/>
+                </methods>
+            </class>
+            <class name="TestSuite.Home.FooterTests">
+                <methods>
+                    <include name="homeFacebookNav"/>
+                    <include name="homeInstagramNav"/>
+                    <include name="homeTiktokNav"/>
+                </methods>
+            </class>
+            <class name="TestSuite.Home.HeaderCategoriesTests">
+                <methods>
+                    <include name="homeCategoryNav"/>
+                    <include name="homeSubCategoryNav"/>
+                </methods>
+            </class>
+            <class name="TestSuite.Home.HeaderUtilityTests">
+                <methods>
+                    <include name="homeLangToArabic"/>
+                    <include name="homeRegisterNav"/>
+                    <include name="homeForgetPassNav"/>
+                </methods>
+            </class>
+            <class name="TestSuite.Accessories.AccessoriesTests">
+                <methods>
+                    <include name="verifyAddToCart"/>
+                    <include name="verifySortingOptions"/>
+                    <include name="verifyPriceFilteringOptions"/>
+                    <include name="verifyBlackColorFilteringOption"/>
+                    <include name="verifyCorrectRedirect"/>
+                    <include name="verifyViewAsOptions"/>
+                    <include name="verifyInvalidPriceFilteringOptions"/>
+                    <include name="verifyMixedColorsFilteringOption"/>
+                    <include name="verifyRemoveFromCart"/>
                 </methods>
             </class>
         </classes>
