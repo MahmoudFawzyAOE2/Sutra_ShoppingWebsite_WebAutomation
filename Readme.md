@@ -55,7 +55,7 @@ Test results will be available in the `allure-results` directory [allure setup n
 allure serve PATH\TO\PROJECT\Sutra_ShoppingWebsite_WebAutomation\allure-results
 ```
 
-**Report Screenshots to be added**
+**---------------Report Screenshots to be added-------------------**
 <!--
 <div align="center"><img src="https://github.com/user-attachments/assets/9b090ff3-5c55-479f-bc34-b389eac30be1" alt="c" width="800" height="300"/> </div>
 <div align="center"><img src="https://github.com/user-attachments/assets/80431601-a952-4172-bbe1-2f800c2a806e" alt="c" width="800" height="550"/> </div>
