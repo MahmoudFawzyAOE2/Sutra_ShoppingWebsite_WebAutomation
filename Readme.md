@@ -15,7 +15,7 @@ https://docs.google.com/spreadsheets/d/16S6UtNJoANOlI1Bh0P6OvgcrKOj71fIdc1jRWklt
 - [Authors](#authors)
 
 ## Description
-Sutra Web Automation Testing Project is a test automation framework tailored for testing core functionalities in this E-commerce website. It provides a structured approach to testing and validating various functionalities, ensuring reliability and efficiency in the testing process. This framework facilitates testing functionalities for searching, retrieving, and navigating through the web site pages using Selenium WebDriver.
+Sutra Web Automation Testing Project is a test automation framework tailored for testing core functionalities in this E-commerce website. It provides a structured approach to testing and validating various functionalities, ensuring reliability and efficiency in the testing process. This framework facilitates testing functionalities for searching, retrieving, and navigating through the website pages using Selenium WebDriver.
 
 ## Tools and Technologies
 <a href="https://www.java.com/en/"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="c" width="60" height="60"/> </a>
@@ -35,16 +35,16 @@ To set up the project locally, follow these steps:
 6. Reload the project to ensure that the dependencies are downloaded correctly
 
 ## Project Structure
-This Projcet include testing requests related to 4 functionalites, each in a separate directory
+This project includes testing requests related to 4 functionalities, each in a separate directory
 * Home Page
 * Accessories Page (as an example of a specific product category)
-* Search Functionaity
+* Search Functionality
 * Register Functionality
 
 Test Automation Features added to this project:
-* Test Listeners: To prevent the driver from closing the window in case of test faliure to help debugging
-* Screenshots for the found bugs
-* Handling the test data in separate java class to improve maintainability=
+* Test Listeners: To prevent the driver from closing the window in case of test failure to help debug
+* Screenshots of the found bugs
+* Handling the test data in separate Java classes to improve maintainability
 
 ## Test Excution
 To run the entire test scenario, excute `TestNG.xml` file. or run a single test independently.
