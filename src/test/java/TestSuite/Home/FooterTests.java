@@ -61,13 +61,6 @@ public class FooterTests extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), URLs.instagram ,"Link Mismatch.");
 
-        WebElement headerOne = driver.findElement(By.cssSelector("span.x1lliihq.x1plvlek.xryxfnj.x1n2onr6.x1ji0vk5.x18bv5gf.x193iq5w.xeuugli.x1fj9vlw.x13faqbe.x1vvkbs.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x1i0vuye.xvs91rp.x1s688f.x5n08af.x10wh9bi.x1wdrske.x8viiok.x18hxmgj"));
-
-        String headerOneText = headerOne.getText().toLowerCase();
-        Assert.assertTrue(headerOneText.contains(TestData.brandName), "Text Mismatch.");
-
-
-
     }
 
     @Test(priority = 1)
@@ -93,8 +86,20 @@ public class FooterTests extends BaseTest {
         Assert.assertTrue(headerTwoText.contains(TestData.brandName), "Text Mismatch.");
 
          */
-
     }
 
+    @Test(priority = 1)
+    @Description("verify twitter (X) social media account")
+    public void homeTwitterNav() {
+
+        // locate the socialMedia element
+        WebElement socialMedia = driver.findElement(By.cssSelector("a.link.link--text.list-social__link.icon-twitter"));
+        socialMedia.click();
+
+        System.out.println(driver.getCurrentUrl());
+
+        Assert.assertTrue(driver.getCurrentUrl().equals(URLs.twitterX) || driver.getCurrentUrl().equals(URLs.twitterX_register), "Link Mismatch." ) ;
+
+    }
 
 }

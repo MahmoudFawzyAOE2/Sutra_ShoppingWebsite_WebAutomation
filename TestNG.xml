@@ -37,6 +37,7 @@
                     <include name="homeFacebookNav"/>
                     <include name="homeInstagramNav"/>
                     <include name="homeTiktokNav"/>
+                    <include name="homeTwitterNav"/>
                 </methods>
             </class>
             <class name="TestSuite.Home.HeaderCategoriesTests">
