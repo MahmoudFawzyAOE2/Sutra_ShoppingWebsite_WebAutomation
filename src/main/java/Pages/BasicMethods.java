@@ -1,8 +1,10 @@
 package Pages;
 
+import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -70,6 +72,7 @@ public class BasicMethods {
         // Take a screenshot of the entire page
         TakesScreenshot ts = (TakesScreenshot) driver;
         File srcFile = ts.getScreenshotAs(OutputType.FILE);
+        byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
 
         // Generate unique filename
         String fileName = "page_screenshot_" + System.currentTimeMillis() + ".png";
@@ -82,6 +85,14 @@ public class BasicMethods {
         srcFile.delete();
 
         System.out.println("Screenshot saved to: " + destFile.getAbsolutePath());
+
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(screenshot)) {
+            Allure.addAttachment(fileName, bais);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
     }
 }
 

@@ -1,1 +1,0 @@
-{"uuid":"f6fe55cd-3c8f-4b26-8206-c37bee6378f4","name":"TestSuite.Home.FooterTests","children":["31f4a17a-60c4-4856-b4a3-7b4f9b7dc842"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1728470347258,"stop":1728470349041}],"afters":[],"links":[],"start":1728470347225,"stop":1728470367196}
